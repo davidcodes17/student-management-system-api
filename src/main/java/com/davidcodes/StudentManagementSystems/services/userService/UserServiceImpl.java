@@ -1,6 +1,7 @@
 package com.davidcodes.StudentManagementSystems.services.userService;
 
 import com.davidcodes.StudentManagementSystems.configuration.Configuration;
+import com.davidcodes.StudentManagementSystems.exceptions.ResourceNotFound;
 import com.davidcodes.StudentManagementSystems.jwt.JwtUtil;
 import com.davidcodes.StudentManagementSystems.model.LoginUser;
 import com.davidcodes.StudentManagementSystems.model.User;
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String updateUser(LoginUser user, String userId) {
-        User foundUser = userRepository.findUserByUserId(userId).orElseThrow(() -> new Error("User Not Found"));
+        User foundUser = userRepository.findUserByUserId(userId).orElseThrow(() -> new ResourceNotFound("User Not Found"));
         user.setPassword(configuration.encodePassword(user.getPassword(), passwordEncoder));
         foundUser.setEmail(user.getEmail());
         foundUser.setPassword(user.getPassword());
@@ -65,7 +66,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String deleteUser(String userId) {
-        User foundUser = userRepository.findUserByUserId(userId).orElseThrow(() -> new Error("User Not Found"));
+        User foundUser = userRepository.findUserByUserId(userId).orElseThrow(() -> new ResourceNotFound("User Not Found"));
         userRepository.delete(foundUser);
         return "User Deleted Successfully";
     }

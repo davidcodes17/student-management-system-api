@@ -10,11 +10,11 @@ public interface StudentService{
 
     public String signup(Student student);
 
-    public String login(LoginStudent student);
+    public Object login(LoginStudent student);
 
-    public String updateStudent(Student student, String studentId);
+    public String updateStudent(Student student, String id);
 
-    public String deleteStudent(String studentId);
+    public String deleteStudent(String id);
 
     public Student getStudentById(String studentId);
 

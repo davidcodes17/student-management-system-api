@@ -16,6 +16,6 @@ public interface CourseService {
 
     public Course fetchCourseByCourseId(String courseId);
 
-    public List<Course> fetchCourseByDepartment(String courseName);
+    public List<Course> fetchCourseByDepartment(String department);
 
 }

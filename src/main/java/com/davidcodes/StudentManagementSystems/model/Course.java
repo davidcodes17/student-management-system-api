@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "students")
-@Data
 @Entity
+@Table(name = "courses") // Map to a separate table
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Course {
@@ -16,19 +16,15 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Student student;
-
-    @Column(name = "courseId")
+    @Column(name = "course_id")
     private String courseId;
 
-    @Column(name = "courseName")
+    @Column(name = "course_name")
     private String courseName;
 
     @Column(name = "department")
     private String department;
 
-    @Column(name = "courseDocumentLink")
+    @Column(name = "course_document_link")
     private String courseDocumentLink;
-
 }

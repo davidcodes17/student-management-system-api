@@ -5,11 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
+@Entity
 @Table(name = "students")
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student {
@@ -18,22 +16,21 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
-    private List<Course> courses;
+    @Column(name = "student_id") // Use the same column name as in Course entity
+    private String studentId;
 
-    @Column(name = "fullName")
+    @Column(name = "full_name") // Use underscore notation for column names
     private String fullName;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "matrixNumber")
+    @Column(name = "matrix_number")
     private String matrixNumber;
 
     @Column(name = "department")
     private String department;
-
 }
